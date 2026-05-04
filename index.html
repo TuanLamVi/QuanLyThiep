@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Invitation - Pi Network</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Admin View -->
+    <div id="adminLoginView" class="view hidden">
+        <div class="container login-container">
+            <div class="login-card">
+                <h1>🔐 Admin Login</h1>
+                <form id="adminLoginForm">
+                    <input 
+                        type="password" 
+                        id="adminPassword" 
+                        placeholder="Nhập mật khẩu admin"
+                        class="input-field"
+                        required
+                    >
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+                <p id="loginError" class="error-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboardView" class="view hidden">
+        <header class="admin-header">
+            <div class="container">
+                <h1>📅 Event Management</h1>
+                <button id="logoutBtn" class="btn btn-secondary">Đăng xuất</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Event Config Section -->
+            <section class="card">
+                <h2>⚙️ Cấu hình Sự kiện</h2>
+                <form id="eventConfigForm">
+                    <div class="form-group">
+                        <label>Tên sự kiện</label>
+                        <input type="text" id="eventName" placeholder="VD: Birthday Party 2026" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày tháng</label>
+                        <input type="datetime-local" id="eventDate" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa điểm</label>
+                        <input type="text" id="eventLocation" placeholder="Địa chỉ chi tiết" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea id="eventDescription" placeholder="Mô tả chi tiết sự kiện" class="input-field" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">💾 Lưu Cấu hình</button>
+                </form>
+            </section>
+
+            <!-- Template Canvas Section -->
+            <section class="card">
+                <h2>🎨 Thiết kế Thiệp (Canvas)</h2>
+                <form id="templateConfigForm">
+                    <div class="form-group">
+                        <label>Màu nền</label>
+                        <input type="color" id="bgColor" value="#1a1a2e" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Màu chữ chính</label>
+                        <input type="color" id="textColor" value="#00ff00" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Font chữ</label>
+                        <select id="fontFamily" class="input-field">
+                            <option value="Arial">Arial</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">💾 Lưu Thiết kế</button>
+                </form>
+            </section>
+
+            <!-- Guests Section -->
+            <section class="card">
+                <h2>👥 Danh sách Khách mời</h2>
+                
+                <!-- Add Guest Form -->
+                <form id="addGuestForm" class="guest-form">
+                    <input type="text" id="guestName" placeholder="Tên khách" class="input-field" required>
+                    <textarea id="guestNote" placeholder="Ghi chú (tuỳ chọn)" class="input-field" rows="2"></textarea>
+                    <button type="submit" class="btn btn-primary">➕ Thêm khách</button>
+                </form>
+
+                <!-- Guests Table -->
+                <div class="table-responsive">
+                    <table id="guestsTable" class="guests-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên khách</th>
+                                <th>Ghi chú</th>
+                                <th>Đã gửi?</th>
+                                <th>Link mời</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Guest View -->
+    <div id="guestView" class="view hidden">
+        <header class="guest-header">
+            <div class="container">
+                <h1>🎉 Bạn được mời!</h1>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Canvas Thiệp -->
+            <div class="card invitation-card">
+                <canvas id="invitationCanvas" width="600" height="800"></canvas>
+            </div>
+
+            <!-- Guest Response -->
+            <section class="card guest-response">
+                <h2>Xác nhận tham dự</h2>
+                <div class="button-group">
+                    <button id="attendBtn" class="btn btn-success">✅ Tôi sẽ đến</button>
+                    <button id="declineBtn" class="btn btn-danger">❌ Tôi không thể đến</button>
+                </div>
+                <p id="guestMessage" class="info-msg"></p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading & Messages -->
+    <div id="loadingSpinner" class="loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
