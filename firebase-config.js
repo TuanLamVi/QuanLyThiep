@@ -2,12 +2,12 @@
 // Thay YOUR_* bằng config của bạn từ Firebase Console
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBpoi3xuIIiOQXMohVLOITlf0DX9JKbs-4",
-  authDomain: "grouppublic-583ac.firebaseapp.com",
-  projectId: "grouppublic-583ac",
-  storageBucket: "grouppublic-583ac.firebasestorage.app",
-  messagingSenderId: "70167414260",
-  appId: "1:70167414260:web:8d3111a010959a38a965a1"
+  apiKey: "AIzaSyBjWM4CoGmezvADuSTl5XSnPd2ntugyh4M",
+  authDomain: "thiepmoi-74103698-dbe87.firebaseapp.com",
+  projectId: "thiepmoi-74103698-dbe87",
+  storageBucket: "thiepmoi-74103698-dbe87.firebasestorage.app",
+  messagingSenderId: "294963219705"
+  appId: "1:294963219705:web:2a9222d250cf81dfe3a628"
 };
 
 // Initialize Firebase
